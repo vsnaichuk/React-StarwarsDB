@@ -1,0 +1,28 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "react-app",
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "globals": {
+    "React": true
+  },
+  "plugins": ["react"],
+  "rules": {
+    "semi": "error",
+    "react/jsx-tag-spacing": [1, {
+      "beforeSelfClosing": "always"
+    }]
+  }
+}

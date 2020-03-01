@@ -1,0 +1,11 @@
+.*
+!.gitattributes
+!.gitignore
+!.eslintrc
+!.babelrc
+
+/node_modules/
+/dist/
+/coverage/
+/build/
+npm-debug.log*
