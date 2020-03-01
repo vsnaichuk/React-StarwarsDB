@@ -5,8 +5,7 @@ You need to install dependencies:
 
 ### `npm install`
 
-
-##In the project directory, you can run
+## In the project directory you can run:
 
 ### `npm run start`
 
