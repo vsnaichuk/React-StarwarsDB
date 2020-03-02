@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "STARWARS";
+    font-display: swap;
+    src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff2") format("woff2"),
+         url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff") format("woff");
+}
+
+html {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: "STARWARS", sans-serif;
+    background: url(../../assets/img/background_star.jpg) repeat-x fixed;
+    background-color: rgba(0,0,0,0.4);
+    background-blend-mode: color;
+    background-size: 100%;
+}
+
+*,
+:after,
+:before {
+    box-sizing: inherit
+}
