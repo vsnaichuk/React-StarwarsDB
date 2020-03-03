@@ -1,5 +1,40 @@
-h1 {
-    font-weight: 500;
-    font-size: 70px;
-    text-align: center
+.header {
+    margin-top: .5rem;
+    padding-left: 10px;
+    font-size: 1.4rem;
+
+}
+
+.header nav a{
+    margin: 0;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+    max-height: 46px;
+    text-decoration: none;
+}
+
+.header nav a:hover {
+    background-color: #232323;
+}
+
+.header nav a:active {
+    transform: scale(0.92)
+}
+
+.header a {
+    text-decoration: none;
+    padding: .5rem 1rem;
+    transition: all .2s ease;
+}
+
+.header a:hover {
+    text-decoration: none;
+}
+
+.header h3 a {
+    color: white;
+}
+
+.header h3 a:hover {
+    color: #00bc8c;
 }

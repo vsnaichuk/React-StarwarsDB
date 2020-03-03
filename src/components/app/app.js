@@ -2,12 +2,9 @@ import React from 'react';
 
 import SwapiService from '../../services/swapi-service';
 import Header from '../header/header';
-import PlanetDetails from '../planet-details/planet-details';
 import RandomPlanet from '../random-planet/random-planet';
 import ItemList from '../item-list/item-list';
 import PersonDetails from '../person-details/person-details';
-import StarshipDetails from '../starship-details/starship-details';
-
 
 import './app.css';
 
@@ -20,19 +17,18 @@ const App = () => {
         .catch((err) => console.log('Could not fetch', err));
 
     return (
-        <div>
+        <div className="container">
             <Header />
-
-            <PlanetDetails />
-
             <RandomPlanet />
 
-            <ItemList />
-
-            <PersonDetails />
-
-            <StarshipDetails />
-
+            <div className="row mb2">
+                <div className="col-md-6">
+                    <ItemList />
+                </div>
+                <div className="col-md-6">
+                    <PersonDetails />
+                </div>
+            </div>
         </div>
     )
 
