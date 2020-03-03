@@ -14,7 +14,6 @@ const App = () => {
 
     swapi.getPerson(3)
         .then(p => console.log(p.name))
-        .catch((err) => console.log('Could not fetch', err));
 
     return (
         <div className="container">
