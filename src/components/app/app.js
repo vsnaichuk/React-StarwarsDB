@@ -13,7 +13,7 @@ const App = () => {
     const swapi = new SwapiService();
 
     swapi.getPerson(3)
-        .then(p => console.log(p.name))
+        .then(p => console.log(p.name));
 
     return (
         <div className="container">
@@ -29,7 +29,7 @@ const App = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 
 };
 

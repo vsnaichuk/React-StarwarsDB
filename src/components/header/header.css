@@ -2,7 +2,7 @@
     margin-top: .5rem;
     padding-left: 10px;
     font-size: 1.4rem;
-
+    align-items: center;
 }
 
 .header nav a{
@@ -31,10 +31,39 @@
     text-decoration: none;
 }
 
+.header h3 {
+    display: flex;
+    text-align: center;
+}
+
 .header h3 a {
-    color: white;
+    font-family: 'Star Jedi Hollow', sans-serif;
+    color: #ffee58;
+    font-size: 42px;
 }
 
 .header h3 a:hover {
     color: #00bc8c;
+}
+
+@media screen and (max-width: 991px) {
+    .header h3 a {
+        font-size: 32px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .header h3 {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 444px) {
+    .header nav a {
+        font-size: 1rem;
+    }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './planet-details.css'
+import './planet-details.css';
 
 const PlanetDetails = () => {
     return (
@@ -9,7 +9,7 @@ const PlanetDetails = () => {
 
 
         </div>
-    )
+    );
 };
 
-export default PlanetDetails
+export default PlanetDetails;

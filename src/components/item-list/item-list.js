@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './item-list.css'
+import './item-list.css';
 
 const ItemList = () => {
     return (
@@ -15,7 +15,7 @@ const ItemList = () => {
                 R2-D2
             </li>
         </ul>
-    )
+    );
 };
 
-export default ItemList
+export default ItemList;

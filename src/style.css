@@ -1,0 +1,73 @@
+@font-face {
+    font-family: "STARWARS";
+    font-display: swap;
+    src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'Star Jedi Hollow';
+    font-display: swap;
+    src: url("//db.onlinewebfonts.com/t/dcb5cf864bdbede594c7d31a204dee8d.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/dcb5cf864bdbede594c7d31a204dee8d.woff") format("woff");
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "STARWARS", sans-serif;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
+.background,
+#background-img,
+.twinkling {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.background {
+    z-index: -2;
+    overflow: hidden;
+}
+
+#background-img {
+    top: 0;
+    left: 0;
+    display: block;
+    background-size: cover;
+    background: rgba(0, 0, 0, 0.2) url(./assets/img/background_star.jpg) top center;
+    background-blend-mode: color;
+    animation: zoom-bg 5s ease-in-out infinite;
+}
+
+.twinkling {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block;
+    background: url(http://www.script-tutorials.com/demos/360/images/twinkling.png) top center;
+    animation: move-twink-back 200s linear infinite;
+}
+
+@keyframes zoom-bg {
+    50% {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes move-twink-back {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -10000px 5000px;
+    }
+}

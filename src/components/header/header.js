@@ -1,12 +1,12 @@
 import React from 'react';
 
-import './header.css'
+import './header.css';
 
 const Header = () => {
     return (
         <div className="header d-flex">
-            <h3 className="col-xl-4">
-                <a href="/#">Star Database</a>
+            <h3 className="col-md-4 col-xl-4">
+                <a href="/#">Star <br /> Database</a>
             </h3>
             <nav className="d-flex">
                 <a href="/#">People</a>
@@ -14,7 +14,7 @@ const Header = () => {
                 <a href="/#">Starships</a>
             </nav>
         </div>
-    )
+    );
 };
 
-export default  Header
+export default  Header;
