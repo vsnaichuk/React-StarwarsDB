@@ -1,5 +1,7 @@
 ## Star Wars Database React App
 
+![](https://media.giphy.com/media/SA5PlmVr6tpdEGYC57/giphy.gif)
+
 
 You need to install dependencies:
 
