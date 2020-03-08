@@ -1,5 +1,6 @@
 .list-group {
     margin-bottom: 1rem;
+    border-radius: 0.25rem;
 }
 
 .list-group .list-group-item {
@@ -12,5 +13,8 @@
 }
 
 .l-item {
+    background-color: transparent;
+}
+.l-group {
     background-color: #222222b3;
 }
