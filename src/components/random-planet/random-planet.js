@@ -50,7 +50,9 @@ export default class RandomPlanet extends Component {
 
         const loader = loading ? <Loader /> : null;
         const problem = error ? <ErrorIndicator /> : null;
-        const content = !(loading || error) ? <PlanetView planet={planet} upd={this.updatePlanet} /> : null;
+        const content = !(loading || error)
+                            ? <PlanetView planet={planet} upd={this.updatePlanet} />
+                            : null;
 
         return (
             <div>
