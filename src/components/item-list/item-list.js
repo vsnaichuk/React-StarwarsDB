@@ -13,7 +13,7 @@ export default class ItemList extends Component {
     state = {
         peopleList: [],
         loading: true,
-        error: false
+        error: false,
     };
 
     componentDidMount() {
@@ -44,9 +44,9 @@ export default class ItemList extends Component {
     renderPeoples = (persons) => {
         return persons.map(({id, name}) => {
             return (
-                <li className="list-group-item l-item"
+                <li className={`list-group-item l-item`}
                     key={id}
-                    onClick={() => this.props.onPersonSelected(id)}>
+                    onClick={() => this.props.onPersonSelected(id)} >
 
                     {name}
                 </li>

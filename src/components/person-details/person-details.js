@@ -23,6 +23,9 @@ export default class PersonDetails extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.selectedPersonId !== prevProps.selectedPersonId) {
             this.loadPersonDetail();
+            this.setState({
+                loading: true
+            });
         }
     }
 

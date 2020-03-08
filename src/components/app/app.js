@@ -10,13 +10,13 @@ import './app.css';
 export default class App extends Component {
 
     state = {
-        selectedPersonId: 1
+        selectedPersonId: 1,
     };
 
 
-    onItemSelected = (id) => {
+    onItemSelected = (id, event) => {
         this.setState({
-            selectedPersonId: id
+            selectedPersonId: id,
         });
     };
 
