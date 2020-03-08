@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 import SwapiService from '../../services/swapi-service';
-
-import './item-list.css';
 import Loader from '../loader/loader';
 import ErrorIndicator from '../error-indicator/error-indicator';
+
+import './item-list.css';
+
 
 export default class ItemList extends Component {
     swapiService = new SwapiService();
@@ -44,7 +45,8 @@ export default class ItemList extends Component {
         return persons.map(({id, name}) => {
             return (
                 <li className="list-group-item l-item"
-                    key={id}>
+                    key={id}
+                    onClick={() => this.props.onPersonSelected(id)}>
 
                     {name}
                 </li>
