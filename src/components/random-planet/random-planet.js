@@ -15,9 +15,9 @@ export default class RandomPlanet extends Component {
         error: false
     };
 
-    constructor() {
-        super();
+    componentDidMount() {
         this.updatePlanet();
+        setInterval(this.updatePlanet, 10000);
     }
 
     onPlanetLoaded = (planet) => {
@@ -34,14 +34,14 @@ export default class RandomPlanet extends Component {
         });
     };
 
-    updatePlanet() {
+    updatePlanet = () => {
         const id = Math.floor(Math.random() * 17) + 2;
         // const id = 1200;
 
         this.swapiService.getPlanet(id)
             .then(this.onPlanetLoaded)
             .catch(this.onError);
-    }
+    };
 
 
     render() {
@@ -49,7 +49,7 @@ export default class RandomPlanet extends Component {
 
         const loader = loading ? <Loader /> : null;
         const problem = error ? <ErrorIndicator /> : null;
-        const content = !(loading || error) ? <PlanetView planet={planet} /> : null;
+        const content = !(loading || error) ? <PlanetView planet={planet} upd={this.updatePlanet} /> : null;
 
         return (
             <div>
@@ -68,7 +68,7 @@ export default class RandomPlanet extends Component {
 
 
 
-const PlanetView = ({ planet }) => {
+const PlanetView = ({ planet, upd }) => {
     const { id, name, population, rotationPeriod, diameter
     } = planet;
 
@@ -100,7 +100,8 @@ const PlanetView = ({ planet }) => {
                 </ul>
 
                 <p className="lead">
-                    <button className="btn btn-primary btn-lg">Learn more</button>
+                    <button className="btn btn-primary btn-lg"
+                            onClick={() => upd()}>Next planet</button>
                 </p>
             </div>
         </React.Fragment>
