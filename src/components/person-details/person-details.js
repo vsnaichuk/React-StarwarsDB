@@ -103,6 +103,7 @@ const PersonView = ({ detailsList, upd, personId }) => {
                 <ul className="list-group list-group-flush">
                     {upd}
                 </ul>
+
             </div>
         </React.Fragment>
     );

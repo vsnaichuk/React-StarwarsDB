@@ -1,40 +1,38 @@
 import React, { Component } from 'react';
 
+import BackAnimation from '../back-animation/back-animation';
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
-import ItemList from '../item-list/item-list';
-import PersonDetails from '../person-details/person-details';
+import PeoplePage from '../people-page/people-page';
+import ErrorIndicator from '../error-indicator/error-indicator';
 
 import './app.css';
 
 export default class App extends Component {
 
     state = {
-        selectedPersonId: 1,
+        hasError: false
     };
 
-
-    onItemSelected = (id, event) => {
-        this.setState({
-            selectedPersonId: id,
-        });
-    };
-
+    componentDidCatch() {
+        this.setState({ hasError: true });
+    }
 
     render() {
+        if (this.state.hasError) {
+            return <ErrorIndicator />;
+        }
+
         return (
-            <div className="container">
-                <Header />
-                <RandomPlanet />
+            <div>
+                <BackAnimation />
 
-                <div className="row mb2">
-                    <div className="col-md-6">
-                        <ItemList onPersonSelected={this.onItemSelected} />
-                    </div>
-
-                    <div className="col-md-6">
-                        <PersonDetails selectedPersonId={this.state.selectedPersonId} />
-                    </div>
+                <div className="container">
+                    <Header />
+                    <RandomPlanet />
+                    <PeoplePage />
+                    <PeoplePage />
+                    <PeoplePage />
                 </div>
             </div>
         );
