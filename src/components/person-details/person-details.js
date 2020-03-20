@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import SwapiService from '../../services/swapi-service';
 import Loader from '../loader/loader';
@@ -86,12 +86,11 @@ export default class PersonDetails extends Component {
             </div>
         );
     }
-
 }
 
 const PersonView = ({ detailsList, upd, personId }) => {
     return (
-        <React.Fragment>
+        <Fragment>
             <img className="person-image"
                  src={
                      `https://starwars-visualguide.com/assets/img/characters/${personId}.jpg`}
@@ -105,7 +104,7 @@ const PersonView = ({ detailsList, upd, personId }) => {
                 </ul>
 
             </div>
-        </React.Fragment>
+        </Fragment>
     );
 };
 
