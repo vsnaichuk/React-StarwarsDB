@@ -19,8 +19,8 @@ const Row = ({ left, right }) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default class PeoplePage extends Component {
     swapiService = new SwapiService();
@@ -47,13 +47,18 @@ export default class PeoplePage extends Component {
 
         const itemList = (
                 <ItemList onPersonSelected={this.onPersonSelected}
-                          getData={this.swapiService.getAllPeople}
-                          renderItem={({name, gender, birthYear}) => `${name} (${gender}, ${birthYear})`} />
-        )
+                          getData={this.swapiService.getAllPeople}>
+
+                    {(i) => (
+                        `${i.name} (${i.birthYear})`
+                    )}
+
+                </ItemList>
+        );
 
         const personDetails = (
             <PersonDetails selectedPersonId={this.state.selectedPersonId} />
-        )
+        );
 
         return (
             <Row left={itemList} right={personDetails} />

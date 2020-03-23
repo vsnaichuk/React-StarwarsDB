@@ -36,35 +36,38 @@ export default class App extends Component {
                     <RandomPlanet />
                     <PeoplePage />
 
-                    <div>
-                        <div className="row mb2">
-                            <div className="col-md-6">
-                                <ItemList
-                                    onPersonSelected={this.onPersonSelected}
-                                    getData={this.swapiService.getAllPlanets}
-                                    renderItem={(item) => item.name} />
-                            </div>
+                    {/*<div>*/}
+                    {/*    <div className="row mb2">*/}
+                    {/*        <div className="col-md-6">*/}
+                    {/*            <ItemList*/}
+                    {/*                onPersonSelected={this.onPersonSelected}*/}
+                    {/*                getData={this.swapiService.getAllPlanets}*/}
+                    {/*                renderItem={(item) => item.name} />*/}
+                    {/*        </div>*/}
 
-                            <div className="col-md-6">
-                                <PersonDetails selectedPersonId={this.state.selectedPersonId} />
-                            </div>
-                        </div>
-                    </div>
+                    {/*        <div className="col-md-6">*/}
+                    {/*            <PersonDetails selectedPersonId={this.state.selectedPersonId} />*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
 
-                    <div>
-                        <div className="row mb2">
-                            <div className="col-md-6">
-                                <ItemList
-                                    onPersonSelected={this.onPersonSelected}
-                                    getData={this.swapiService.getAllStarships}
-                                    renderItem={(item) => item.name} />
-                            </div>
+                    {/*<div>*/}
+                    {/*    <div className="row mb2">*/}
+                    {/*        <div className="col-md-6">*/}
+                    {/*            <ItemList*/}
+                    {/*                onPersonSelected={this.onPersonSelected}*/}
+                    {/*                getData={this.swapiService.getAllStarships}>*/}
 
-                            <div className="col-md-6">
-                                <PersonDetails selectedPersonId={this.state.selectedPersonId} />
-                            </div>
-                        </div>
-                    </div>
+                    {/*                {(item) => item.name}*/}
+
+                    {/*            </ItemList>*/}
+                    {/*        </div>*/}
+
+                    {/*        <div className="col-md-6">*/}
+                    {/*            <PersonDetails selectedPersonId={this.state.selectedPersonId} />*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         );
