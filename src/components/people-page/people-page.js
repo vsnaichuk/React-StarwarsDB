@@ -1,11 +1,12 @@
-import './people-page.css';
 import React, { Component } from 'react';
 
 import SwapiService from '../../services/swapi-service';
 import ItemList from '../item-list/item-list';
-import PersonDetails from '../person-details/person-details';
+import ItemDetails from '../item-details/item-details';
 import Row from '../row/row';
 import ErrorBoundry from '../error-boundry/error-boundry';
+
+import './people-page.css';
 
 
 export default class PeoplePage extends Component {
@@ -33,15 +34,15 @@ export default class PeoplePage extends Component {
             </ItemList>
         );
 
-        const personDetails = (
-            <PersonDetails
-                selectedPersonId={this.state.selectedPersonId}
+        const itemDetails = (
+            <ItemDetails
+                itemId={this.state.selectedPersonId}
             />
         );
 
         return (
             <ErrorBoundry>
-                <Row left={itemList} right={personDetails} />
+                <Row left={itemList} right={itemDetails} />
             </ErrorBoundry>
         );
     }

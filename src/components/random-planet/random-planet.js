@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import SwapiService from '../../services/swapi-service';
 import Loader from '../loader/loader';
@@ -37,7 +37,6 @@ export default class RandomPlanet extends Component {
 
     updatePlanet = () => {
         const id = Math.floor(Math.random() * 17) + 2;
-        // const id = 1200;
 
         this.swapiService.getPlanet(id)
             .then(this.onPlanetLoaded)
@@ -58,7 +57,10 @@ export default class RandomPlanet extends Component {
         const loader = loading ? <Loader /> : null;
         const problem = error ? <ErrorIndicator /> : null;
         const content = !(loading || error)
-                            ? <PlanetView planet={planet} upd={this.nextPlanet} />
+                            ? <PlanetView
+                                planet={planet}
+                                upd={this.nextPlanet}
+                                image={this.swapiService.getPlanetImage} />
                             : null;
 
         return (
@@ -76,14 +78,14 @@ export default class RandomPlanet extends Component {
 
 }
 
-const PlanetView = ({ planet, upd }) => {
+const PlanetView = ({ planet, upd, image }) => {
     const { id, name, population, rotationPeriod, diameter
     } = planet;
 
     return (
-        <React.Fragment>
+        <Fragment>
             <img className="planet-image"
-                 src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt={name} />
+                 src={image(id)} alt={name} />
 
             <div>
                 <h4 className="display-5">{name}</h4>
@@ -112,6 +114,6 @@ const PlanetView = ({ planet, upd }) => {
                             onClick={() => upd()}>Next planet</button>
                 </p>
             </div>
-        </React.Fragment>
+        </Fragment>
     );
 };

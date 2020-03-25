@@ -1,5 +1,6 @@
-import './row.css';
 import React from 'react';
+import './row.css';
+
 
 const Row = ({ left, right }) => {
     return (

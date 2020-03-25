@@ -4,25 +4,26 @@ import SwapiService from '../../services/swapi-service';
 import Loader from '../loader/loader';
 import ErrorIndicator from '../error-indicator/error-indicator';
 
-import './person-details.css';
+import './item-details.css';
 
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
     swapiService = new SwapiService();
 
     state = {
         detailsList: {},
+        image: null,
         loading: true,
         error: false
     };
 
     componentDidMount() {
-        this.loadPersonDetail();
+        this.loadItemDetail();
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.selectedPersonId !== prevProps.selectedPersonId) {
-            this.loadPersonDetail();
+        if (this.props.itemId !== prevProps.itemId) {
+            this.loadItemDetail();
             this.setState({
                 loading: true
             });
@@ -36,50 +37,52 @@ export default class PersonDetails extends Component {
         });
     };
 
-    onPersonLoaded = (detailsList) => {
+    onItemLoaded = (detailsList) => {
+        const { itemId, getImageUrl } = this.props;
+
         this.setState({
             detailsList,
+            image: getImageUrl(itemId),
             loading: false
         });
     };
 
-    loadPersonDetail = () => {
-        const { selectedPersonId } = this.props;
+    loadItemDetail = () => {
+        const { itemId, getData } = this.props;
 
-        if (selectedPersonId) {
-            this.swapiService.getPerson(selectedPersonId)
-                .then(this.onPersonLoaded)
+        if (itemId) {
+            getData(itemId)
+                .then(this.onItemLoaded)
                 .catch(this.onError);
         }
     };
 
 
-    renderPersonDetail = (personDetail) => {
-        return Object.keys(personDetail).map(el => {
+    renderItemDetail = (itemDetail) => {
+        return Object.keys(itemDetail).map(el => {
             return (
                 <li key={el} className="list-group-item">
                     <span className="term">{el}</span>
 
-                    <span>{personDetail[el]}</span>
+                    <span>{itemDetail[el]}</span>
                 </li>
             );
         });
     };
 
     render() {
-        const { detailsList, loading, error } = this.state;
+        const { detailsList, loading, error, image } = this.state;
 
         const loader = loading ? <Loader /> : null;
         const problem = error ? <ErrorIndicator /> : null;
-
         const content = !(loading || error)
-                            ? <PersonView detailsList={detailsList}
-                                          upd={this.renderPersonDetail(detailsList)}
-                                          personId={this.props.selectedPersonId} />
+                            ? <ItemView detailsList={detailsList}
+                                        upd={this.renderItemDetail(detailsList)}
+                                        image={image} />
                             : null;
 
         return (
-            <div className="person-details card">
+            <div className="item-details card">
                 {loader}
                 {problem}
                 {content}
@@ -88,19 +91,22 @@ export default class PersonDetails extends Component {
     }
 }
 
-const PersonView = ({ detailsList, upd, personId }) => {
+const ItemView = ({ detailsList, upd, image }) => {
+    const { name } = detailsList;
+
     return (
         <Fragment>
-            <img className="person-image"
-                 src={
-                     `https://starwars-visualguide.com/assets/img/characters/${personId}.jpg`}
-                 alt={detailsList.name} />
+            <img className="item-image"
+                 src={image}
+                 alt={name} />
 
             <div className="card-body">
-                <h4>{detailsList.name}</h4>
+                <h4>{name}</h4>
 
                 <ul className="list-group list-group-flush">
-                    {upd}
+                    {
+                        upd
+                    }
                 </ul>
 
             </div>

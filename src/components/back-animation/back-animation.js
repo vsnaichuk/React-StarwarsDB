@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './back-animation.css';
 
 const BackAnimation = () => {
