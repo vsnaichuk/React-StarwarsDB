@@ -1,10 +1,22 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, Children } from 'react';
 
 import SwapiService from '../../services/swapi-service';
 import Loader from '../loader/loader';
 import ErrorIndicator from '../error-indicator/error-indicator';
 
 import './item-details.css';
+
+
+const Record = ({item, field, label}) => {
+    return (
+        <li className="list-group-item">
+            <span className="term">{label}</span>
+
+            <span>{ field }</span>
+        </li>
+    );
+};
+export { Record };
 
 
 export default class ItemDetails extends Component {
@@ -57,28 +69,16 @@ export default class ItemDetails extends Component {
         }
     };
 
-
-    renderItemDetail = (itemDetail) => {
-        return Object.keys(itemDetail).map(el => {
-            return (
-                <li key={el} className="list-group-item">
-                    <span className="term">{el}</span>
-
-                    <span>{itemDetail[el]}</span>
-                </li>
-            );
-        });
-    };
-
     render() {
         const { detailsList, loading, error, image } = this.state;
+        const children = Children.map(this.props.children, child => child);
 
         const loader = loading ? <Loader /> : null;
         const problem = error ? <ErrorIndicator /> : null;
         const content = !(loading || error)
-                            ? <ItemView detailsList={detailsList}
-                                        upd={this.renderItemDetail(detailsList)}
-                                        image={image} />
+                            ? <DetailsView detailsList={detailsList}
+                                           record={children}
+                                           image={image} />
                             : null;
 
         return (
@@ -91,24 +91,21 @@ export default class ItemDetails extends Component {
     }
 }
 
-const ItemView = ({ detailsList, upd, image }) => {
-    const { name } = detailsList;
-
+const DetailsView = ({ detailsList, record, image }) => {
     return (
         <Fragment>
             <img className="item-image"
                  src={image}
-                 alt={name} />
+                 alt={detailsList.name} />
 
             <div className="card-body">
-                <h4>{name}</h4>
+                <h4>{detailsList.name}</h4>
 
                 <ul className="list-group list-group-flush">
                     {
-                        upd
+                        record
                     }
                 </ul>
-
             </div>
         </Fragment>
     );

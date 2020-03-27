@@ -89,8 +89,6 @@ export default class SwapiService { //клас-сервіс;
             manufacturer: starship.manufacturer,
             costInCredits: starship.cost_in_credits,
             length: starship.length,
-            crew: starship.crew,
-            passengers: starship.passengers,
             cargo_capacity: starship.cargo_capacity
         };
     }
