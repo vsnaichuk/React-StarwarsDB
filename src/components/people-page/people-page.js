@@ -37,6 +37,7 @@ export default class PeoplePage extends Component {
         const itemDetails = (
             <ItemDetails
                 itemId={this.state.selectedPersonId}
+                getData={this.swapiService.getPerson}
             />
         );
 
