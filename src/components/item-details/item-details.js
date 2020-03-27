@@ -1,4 +1,4 @@
-import React, { Component, Fragment, Children } from 'react';
+import React, { Component, Fragment, Children, cloneElement } from 'react';
 
 import SwapiService from '../../services/swapi-service';
 import Loader from '../loader/loader';
@@ -12,7 +12,7 @@ const Record = ({item, field, label}) => {
         <li className="list-group-item">
             <span className="term">{label}</span>
 
-            <span>{ field }</span>
+            <span>{ item[field] }</span>
         </li>
     );
 };
@@ -23,7 +23,7 @@ export default class ItemDetails extends Component {
     swapiService = new SwapiService();
 
     state = {
-        detailsList: {},
+        item: {},
         image: null,
         loading: true,
         error: false
@@ -49,11 +49,11 @@ export default class ItemDetails extends Component {
         });
     };
 
-    onItemLoaded = (detailsList) => {
+    onItemLoaded = (item) => {
         const { itemId, getImageUrl } = this.props;
 
         this.setState({
-            detailsList,
+            item,
             image: getImageUrl(itemId),
             loading: false
         });
@@ -70,13 +70,15 @@ export default class ItemDetails extends Component {
     };
 
     render() {
-        const { detailsList, loading, error, image } = this.state;
-        const children = Children.map(this.props.children, child => child);
+        const { item, loading, error, image } = this.state;
+
+        const children = Children.map(this.props.children, child =>
+            cloneElement(child, {item} ));
 
         const loader = loading ? <Loader /> : null;
         const problem = error ? <ErrorIndicator /> : null;
         const content = !(loading || error)
-                            ? <DetailsView detailsList={detailsList}
+                            ? <DetailsView item={item}
                                            record={children}
                                            image={image} />
                             : null;
@@ -91,15 +93,15 @@ export default class ItemDetails extends Component {
     }
 }
 
-const DetailsView = ({ detailsList, record, image }) => {
+const DetailsView = ({ item, record, image }) => {
     return (
         <Fragment>
             <img className="item-image"
                  src={image}
-                 alt={detailsList.name} />
+                 alt="item" />
 
             <div className="card-body">
-                <h4>{detailsList.name}</h4>
+                <h4>{item.name}</h4>
 
                 <ul className="list-group list-group-flush">
                     {

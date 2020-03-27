@@ -85,7 +85,7 @@ const PlanetView = ({ planet, upd, image }) => {
     return (
         <Fragment>
             <img className="planet-image"
-                 src={image(id)} alt={name} />
+                 src={image(id)} alt="planet" />
 
             <div>
                 <h4 className="display-5">{name}</h4>
