@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
 
-import SwapiService from '../../services/swapi-service';
 import BackAnimation from '../back-animation/back-animation';
 import ErrorIndicator from '../error-indicator/error-indicator';
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
 import Row from '../row/row';
 import PeoplePage from '../people-page/people-page';
-import ItemList from '../item-list/item-list';
-import ItemDetails, { Record } from '../item-details/item-details';
+
+import {
+    PersonList,
+    PlanetList,
+    StarshipList,
+} from '../sw-components/item-lists';
+
+import {
+    PersonDetails,
+    PlanetDetails,
+    StarshipDetails
+} from '../sw-components/details';
 
 import './app.css';
 
 
 export default class App extends Component {
-    swapiService = new SwapiService();
 
     state = {
         hasError: false
@@ -29,39 +37,6 @@ export default class App extends Component {
             return <ErrorIndicator />;
         }
 
-        const {getAllPlanets, getPerson, getStarship,
-                getPersonImage,
-                getStarshipsImage} = this.swapiService;
-
-        const personDetails = (
-            <ItemDetails
-                itemId={12}
-                getData={getPerson}
-                getImageUrl={getPersonImage}>
-
-                <Record field="gender" label="Gender:" />
-                <Record field="eyeColor" label="Eye Color:" />
-
-
-            </ItemDetails>
-
-        );
-
-        const starshipDetails = (
-            <ItemDetails
-                itemId={12}
-                getData={getStarship}
-                getImageUrl={getStarshipsImage}>
-
-                <Record field="model" label="Model:" />
-                <Record field="manufacturer" label="Manufacturer:" />
-                <Record field="costInCredits" label="Cost in credits:" />
-                <Record field="length" label="Length:" />
-                <Record field="cargo_capacity" label="Cargo capacity:" />
-
-            </ItemDetails>
-        );
-
         return (
             <div>
                 <BackAnimation />
@@ -72,14 +47,30 @@ export default class App extends Component {
                     {/*<Row left={personDetails}*/}
                     {/*     right={starshipDetails} />*/}
 
+                    <PersonDetails personId={12} />
+                    <PlanetDetails planetId={10} />
+                    <StarshipDetails starshipId={5} />
 
-                    <ItemList
-                        onPersonSelected={this.onPersonSelected}
-                        getData={getAllPlanets}>
+                    <PersonList
+                        onPersonSelected={this.onPersonSelected}>
 
                         {(item) => item.name}
 
-                    </ItemList>
+                    </PersonList>
+
+                    <PlanetList
+                        onPersonSelected={this.onPersonSelected}>
+
+                        {(item) => item.name}
+
+                    </PlanetList>
+
+                    <StarshipList
+                        onPersonSelected={this.onPersonSelected}>
+
+                        {(item) => item.name}
+
+                    </StarshipList>
 
 
                     {/*<ItemList*/}

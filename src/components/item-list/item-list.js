@@ -1,13 +1,10 @@
 import React from 'react';
 
-import SwapiService from '../../services/swapi-service';
-import { withData } from '../hoc-helper/with-data';
-
 import './item-list.css';
 
 
 const ItemList = (props) => {
-    const {children, onPersonSelected, itemList} = props;
+    const {children, onPersonSelected, data} = props;
 
     const renderItems = itemArr =>
         itemArr.map(item => {
@@ -28,13 +25,10 @@ const ItemList = (props) => {
     return (
         <ul className="list-group-flush list-group l-group">
 
-            { renderItems(itemList) }
+            { renderItems(data) }
 
         </ul>
     );
 };
 
-
-const { getAllPeople } = new SwapiService();
-
-export default withData(ItemList, getAllPeople);
+export default ItemList;

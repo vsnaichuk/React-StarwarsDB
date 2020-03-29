@@ -7,7 +7,7 @@ import ErrorIndicator from '../error-indicator/error-indicator';
 const withData = (View, getData) => {
     return class extends Component {
         state = {
-            itemList: [],
+            data: [],
             loading: true,
             error: false
         };
@@ -16,9 +16,9 @@ const withData = (View, getData) => {
             this.loadItems();
         }
 
-        onDataLoaded = (itemList) => {
+        onDataLoaded = (data) => {
             this.setState({
-                itemList,
+                data,
                 loading: false
             });
         };
@@ -38,13 +38,13 @@ const withData = (View, getData) => {
 
 
         render() {
-            const { itemList, loading, error } = this.state;
+            const { data, loading, error } = this.state;
 
             const loader = loading ? <Loader /> : null;
             const problem = error ? <ErrorIndicator /> : null;
             const content = !(loading || error)
                 ? <View {...this.props}
-                        itemList={itemList} />
+                        data={data} />
                 : null;
 
             return (
