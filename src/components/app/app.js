@@ -53,23 +53,14 @@ export default class App extends Component {
 
                     <PersonList
                         onPersonSelected={this.onPersonSelected}>
-
-                        {(item) => item.name}
-
                     </PersonList>
 
                     <PlanetList
                         onPersonSelected={this.onPersonSelected}>
-
-                        {(item) => item.name}
-
                     </PlanetList>
 
                     <StarshipList
                         onPersonSelected={this.onPersonSelected}>
-
-                        {(item) => item.name}
-
                     </StarshipList>
 
 
