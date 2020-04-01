@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import BackAnimation from '../back-animation/back-animation';
+import SwapiService from '../../services/swapi-service';
 import ErrorIndicator from '../error-indicator/error-indicator';
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
@@ -19,10 +20,16 @@ import {
     StarshipDetails
 } from '../sw-components/details';
 
+import {
+    SwapiServiceProvider,
+    SwapiServiceConsumer
+} from '../swapi-service-context/swapi-service-context';
+
 import './app.css';
 
 
 export default class App extends Component {
+    swapiService = new SwapiService();
 
     state = {
         hasError: false
@@ -33,6 +40,7 @@ export default class App extends Component {
     }
 
     render() {
+
         if (this.state.hasError) {
             return <ErrorIndicator />;
         }
@@ -40,6 +48,8 @@ export default class App extends Component {
         return (
             <div>
                 <BackAnimation />
+
+                <SwapiServiceProvider value={this.swapiService} />
 
                 <div className="container">
                     <Header />
