@@ -57,7 +57,7 @@ export default class App extends Component {
                     {/*<Row left={personDetails}*/}
                     {/*     right={starshipDetails} />*/}
 
-                    <PersonDetails personId={12} />
+                    {/*<PersonDetails personId={12} />*/}
                     <PlanetDetails planetId={10} />
                     <StarshipDetails starshipId={5} />
 
