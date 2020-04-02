@@ -59,7 +59,7 @@ export default class App extends Component {
 
                     {/*<PersonDetails personId={12} />*/}
                     {/*<PlanetDetails planetId={10} />*/}
-                    <StarshipDetails starshipId={5} />
+                    {/*<StarshipDetails starshipId={5} />*/}
 
                     <PersonList
                         onPersonSelected={this.onPersonSelected}>
