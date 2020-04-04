@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import BackAnimation from '../back-animation/back-animation';
 import SwapiService from '../../services/swapi-service';
-import ErrorIndicator from '../error-indicator/error-indicator';
+import { SwapiServiceProvider } from '../swapi-service-context/swapi-service-context';
+import ErrorBoundry from '../error-boundry/error-boundry';
 import Header from '../header/header';
 import RandomPlanet from '../random-planet/random-planet';
 import Row from '../row/row';
@@ -20,10 +21,6 @@ import {
     StarshipDetails
 } from '../sw-components/details';
 
-import {
-    SwapiServiceProvider,
-    SwapiServiceConsumer
-} from '../swapi-service-context/swapi-service-context';
 
 import './app.css';
 
@@ -31,58 +28,48 @@ import './app.css';
 export default class App extends Component {
     swapiService = new SwapiService();
 
-    state = {
-        hasError: false
-    };
-
-    componentDidCatch() {
-        this.setState({ hasError: true });
-    }
-
     render() {
-
-        if (this.state.hasError) {
-            return <ErrorIndicator />;
-        }
-
         return (
-            <div>
-                <BackAnimation />
+           <ErrorBoundry>
+               <SwapiServiceProvider value={this.swapiService}>
 
-                <SwapiServiceProvider value={this.swapiService} />
+                   <BackAnimation />
 
-                <div className="container">
-                    <Header />
-                    <RandomPlanet />
-                    {/*<Row left={personDetails}*/}
-                    {/*     right={starshipDetails} />*/}
+                   <div className="container">
+                       <Header />
+                       <RandomPlanet />
+                       {/*<Row left={personDetails}*/}
+                       {/*     right={starshipDetails} />*/}
 
-                    <PersonDetails personId={12} />
-                    <PlanetDetails planetId={10} />
-                    <StarshipDetails starshipId={5} />
+                       <PersonDetails personId={12} />
+                       <PlanetDetails planetId={10} />
+                       <StarshipDetails starshipId={5} />
 
-                    <PersonList
-                        onPersonSelected={this.onPersonSelected}>
-                    </PersonList>
+                       <PersonList
+                           onPersonSelected={this.onPersonSelected}>
+                       </PersonList>
 
-                    <PlanetList
-                        onPersonSelected={this.onPersonSelected}>
-                    </PlanetList>
+                       <PlanetList
+                           onPersonSelected={this.onPersonSelected}>
+                       </PlanetList>
 
-                    <StarshipList
-                        onPersonSelected={this.onPersonSelected}>
-                    </StarshipList>
+                       <StarshipList
+                           onPersonSelected={this.onPersonSelected}>
+                       </StarshipList>
 
 
-                    {/*<ItemList*/}
-                    {/*    onPersonSelected={this.onPersonSelected}*/}
-                    {/*    getData={this.swapiService.getAllStarships}>*/}
+                        {/*<ItemList*/}
+                        {/*    onPersonSelected={this.onPersonSelected}*/}
+                        {/*    getData={this.swapiService.getAllStarships}>*/}
 
-                    {/*    {(item) => item.name}*/}
+                        {/*    {(item) => item.name}*/}
 
-                    {/*</ItemList>*/}
-                </div>
-            </div>
+                        {/*</ItemList>*/}
+
+                    </div>
+               </SwapiServiceProvider>
+           </ErrorBoundry>
+
         );
 
     }
