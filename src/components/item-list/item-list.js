@@ -4,7 +4,7 @@ import './item-list.css';
 
 
 const ItemList = (props) => {
-    const {children, onPersonSelected, data} = props;
+    const {children, onItemSelected, data} = props;
 
     const renderItems = itemArr =>
         itemArr.map(item => {
@@ -14,7 +14,7 @@ const ItemList = (props) => {
             return (
                 <li className={`list-group-item l-item`}
                     key={id}
-                    onClick={() => onPersonSelected(id)} >
+                    onClick={() => onItemSelected(id)} >
 
                     {label}
                 </li>

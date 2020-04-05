@@ -40,19 +40,14 @@ const withData = (View, getData) => {
         render() {
             const { data, loading, error } = this.state;
 
-            const loader = loading ? <Loader /> : null;
-            const problem = error ? <ErrorIndicator /> : null;
-            const content = !(loading || error)
-                ? <View {...this.props}
-                        data={data} />
-                : null;
+            if (loading) return <Loader />;
+
+            if (error) return <ErrorIndicator />;
 
             return (
-                <div className="list-group">
-                    {loader}
-                    {problem}
-                    {content}
-                </div>
+                <View
+                    {...this.props}
+                    data={data} />
             );
         }
     };

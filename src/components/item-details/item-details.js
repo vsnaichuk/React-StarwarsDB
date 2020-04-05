@@ -75,8 +75,14 @@ export default class ItemDetails extends Component {
         const children = Children.map(this.props.children, child =>
             cloneElement(child, {item} ));
 
-        const loader = loading ? <Loader /> : null;
-        const problem = error ? <ErrorIndicator /> : null;
+        const loader = loading
+                            ? <Loader />
+                            : null;
+
+        const problem = error
+                            ? <ErrorIndicator />
+                            : null;
+
         const content = !(loading || error)
                             ? <DetailsView item={item}
                                            record={children}
