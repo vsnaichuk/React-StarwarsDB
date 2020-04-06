@@ -26,7 +26,7 @@ export default class App extends Component {
                    <div className="container">
                        <Header />
 
-                       <RandomPlanet />
+                       <RandomPlanet updateTime={10000} />
 
                        <PeoplePage />
 
