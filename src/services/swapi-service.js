@@ -1,6 +1,6 @@
 export default class SwapiService { //клас-сервіс;
     // асинх ізольоване джерело даних
-    _apiBase = 'https://swapi.co/api'; //private часть класу
+    _apiBase = 'https://swapi.dev/api'; //private часть класу
     _apiImage = `https://starwars-visualguide.com/assets/img`;
 
 
